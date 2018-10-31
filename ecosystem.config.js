@@ -23,10 +23,9 @@ module.exports = {
     production: {
       user: 'root',
       host: ['104.238.185.118'],
-      ref: 'origin/master'
+      ref: 'origin/master',
       repo: 'git@github.com:695954085/smart-bank-outlet-server.git',
-      key: '~/.ssh',
-      path: '/root/workspace',
+      path: '/home/workspace',
       'post-deploy': 'yarn install && pm2 reload ecosystem.config.js --env production',
       ssh_options: 'StrictHostKeyChecking=no',
     },
