@@ -1,4 +1,6 @@
-const nodemailer = require('nodemailer');
+import nodemailer from 'nodemailer';
+import util from 'util';
+import logger from '../config/winston';
 
 module.exports = function email() {
   this.add('role:email,path:sendEmail', (msg, respond) => {
@@ -7,7 +9,7 @@ module.exports = function email() {
       port: 25,
       secure: false,
       auth: {
-        user: 'xiachiquan@agree.com.cn',
+        user: '',
         pass: '',
       },
       tls: {
@@ -17,19 +19,21 @@ module.exports = function email() {
     });
 
     const mailOptions = {
-      from: 'xiachiquan@agree.com.cn',
-      to: 'xiachiquan@agree.com.cn',
-      subject: 'Hello',
-      text: 'Hello World',
-      html: '<b>Hello World?</b>',
+      from: '',
+      to: `${msg.message}@xxx`,
+      subject: '注册',
+      text: '注册成功',
+      html: '<b>注册成功</b>',
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-        return console.log(error);
+        logger.error(util.format('%s', error.message));
+        respond(error);
+        return;
       }
-      console.log('Message sned: %s', info.messageId);
-      console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+      logger.info('Message sned: %s', info.messageId);
+      logger.info('Preview URL: %s', nodemailer.getTestMessageUrl(info));
       respond(null, { result: 'ok' });
     });
   });

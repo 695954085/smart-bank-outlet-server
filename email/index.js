@@ -1,4 +1,3 @@
-const seneca = require('seneca')();
-
-seneca.use('api').listen({ port: 3001, timeout: 20000 })
-;
+require('babel-register');
+require('babel-core');
+require('./app');
