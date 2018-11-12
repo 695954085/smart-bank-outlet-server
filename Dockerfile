@@ -1,15 +1,16 @@
 FROM keymetrics/pm2:latest-alpine
 
 # Bundle APP files
-COPY . .
+COPY src src/
+COPY package.json .
+COPY ecosystem.config.js .
 
 # Install app dependencies
 ENV NPM_CONFIG_LOGLEVEL warn
 RUN npm install --production
 
 # Expose the listening port of your app
-EXPOSE 3000
-EXPOSE 3001
+EXPOSE 8000
 
 # Show current folder structure in logs
 RUN ls -al -R
