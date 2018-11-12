@@ -4,12 +4,21 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.26.0",
+    "bcrypt": "^3.0.2",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "formidable": "^1.2.1",
+    "morgan": "^1.9.1",
+    "mysql2": "^1.6.4",
     "nodemailer": "^4.6.8",
     "seneca": "^3.7.0",
     "seneca-web": "^2.2.1",
-    "seneca-web-adapter-express": "^1.1.2"
+    "seneca-web-adapter-express": "^1.1.2",
+    "sequelize": "^4.41.1",
+    "winston": "^3.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
